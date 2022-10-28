@@ -15,3 +15,14 @@ paragraph.appendChild(content);
 const div1 = document.getElementById('div1');
 div1.appendChild(paragraph);
 console.log('At the end of the file');
+
+function addElements(theElements) {
+  theElements = theElements.json();
+  console.log('Before looping', theElements);
+  console.log('Get individual element', theElements[0]);
+  for (let i = 0; i < theElements.length; i++) {
+    const currentElement = theElements[i];
+    //console.log('The currentElement', currentElement);
+  }
+}
+addElements(response);
