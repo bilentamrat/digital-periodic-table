@@ -8,6 +8,15 @@ async function loadElements() {
   }
 const elements = loadElements()
 
+async function getElement (name){
+  const URL = `https://periodic-table-elements-info.herokuapp.com/element/atomicName/${name}`;
+  //var name = 
+  const res = await fetch(`${URL}`);
+  const data = await res.json();
+return data 
+}
+const element = getElement('sodium')
+console.log('element', element);
 
 console.log('At the end of the file');
 
