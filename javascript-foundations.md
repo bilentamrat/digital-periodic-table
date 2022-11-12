@@ -1,3 +1,5 @@
+View code examples [here](https://replit.com/@NintiChance2/Function-Example#index.js)
+
 ## Variables
 `variable` - is a container for storing data. A `variable` can store any data type--strings, arrays, objects and it can even store a function in JS! Think of a `variable` as a box where you organize your items/data. If you need to find a piece of data, just go to its variable box to get it. 
 
