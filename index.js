@@ -1,3 +1,28 @@
+const atomInfo = [
+  'atomicNumber',
+  'symbol',
+  'name',
+  'atomicMass',
+  'electronicConfiguration',
+  'electronegativity',
+  'atomicRadius',
+  'ionRadius',
+  'vanDerWaalsRadius',
+  'ionizationEnergy',
+  'electronAffinity',
+  'oxidationStates',
+  'standardState',
+  'bondingType',
+  'meltingPoint',
+  'boilingPoint',
+  'density',
+  'groupBlock',
+  'yearDiscovered',
+  'block',
+  'cpkHexColor',
+  'period',
+  'group',
+];
 console.log('We in HERE!');
 async function loadAtoms() {
   const URL = 'https://periodic-table-elements-info.herokuapp.com/elements';
@@ -15,21 +40,26 @@ async function getAtom(name) {
   return data;
 }
 async function retrieveAtom(atom) {
- atom = await getAtom(atom);
+  atom = await getAtom(atom);
   console.log('sodium', atom);
-  const paragraph = document.createElement('p');
-  const content = document.createTextNode(atom);
-  paragraph.appendChild(content);
-  const div1 = document.getElementById('div1');
-  div1.appendChild(paragraph);
+  for (let i = 0; i < atomInfo.length; i++) {
+    console.log(
+      'Getting value',
+      atom[0][`${atomInfo[i]}`],
+      'From key',
+      atomInfo[i]
+    );
+    const content = document.createTextNode(atom[0][`${atomInfo[i]}`]);
+    const p = document.getElementsByClassName('atom-content')[0];
+    p.appendChild(content);
+  }
 }
-retrieveAtom('sodium');
 
 //console.log('At the end of the file');
 
 async function addAtoms(theAtoms) {
   theAtoms = await theAtoms;
-  //console.log('Before looping', theAtoms);
+  //console.log('Before looping',theAtoms);
   //console.log('Get individual element', theAtoms[0]);
   for (let i = 0; i < theAtoms.length; i++) {
     const currentAtom = theAtoms[i];
@@ -44,31 +74,31 @@ async function addAtoms(theAtoms) {
 }
 addAtoms(atoms);
 
-
 // Get the modal
-var modal = document.getElementById("myModal");
-console.log('myModal', modal)
-console.log('document', document)
+var modal = document.getElementById('myModal');
+console.log('myModal', modal);
+console.log('document', document);
 // Get the button that opens the modal
-var btn = document.getElementById("btn");
-console.log('btn', btn)
+var btn = document.getElementById('btn');
+console.log('btn', btn);
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName('close')[0];
 
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+btn.onclick = function () {
+  retrieveAtom('sodium');
+  modal.style.display = 'block';
+};
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+span.onclick = function () {
+  modal.style.display = 'none';
+};
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    modal.style.display = 'none';
   }
-}
+};
