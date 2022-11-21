@@ -1,4 +1,4 @@
-const atomInfo = [
+const atomKeys = [
   'atomicNumber',
   'symbol',
   'name',
@@ -42,16 +42,14 @@ async function getAtom(name) {
 async function retrieveAtom(atom) {
   atom = await getAtom(atom);
   console.log('sodium', atom);
-  for (let i = 0; i < atomInfo.length; i++) {
-    console.log(
-      'Getting value',
-      atom[0][`${atomInfo[i]}`],
-      'From key',
-      atomInfo[i]
-    );
-    const content = document.createTextNode(atom[0][`${atomInfo[i]}`]);
-    const p = document.getElementsByClassName('atom-content')[0];
-    p.appendChild(content);
+  for (let i = 0; i < atomKeys.length; i++) {
+    const atomValue = atom[0][`${atomKeys[i]}`];
+    if (atomValue != 'unknown') {
+      console.log('Getting value', atomValue, 'From key', atomKeys[i]);
+      const content = document.createTextNode(atomValue);
+      const p = document.getElementsByClassName('atom-content')[0];
+      p.appendChild(content);
+    }
   }
 }
 
@@ -68,6 +66,10 @@ async function addAtoms(theAtoms) {
     paragraph.appendChild(content);
     const div1 = document.getElementById('div1');
     div1.appendChild(paragraph);
+    paragraph.onclick = function () {
+      retrieveAtom(currentAtom.name);
+      modal.style.display = 'block';
+    };
 
     //console.log('The currentAtom', currentAtom);
   }
