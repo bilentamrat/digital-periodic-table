@@ -61,17 +61,23 @@ async function addAtoms(theAtoms) {
   //console.log('Get individual element', theAtoms[0]);
   for (let i = 0; i < theAtoms.length; i++) {
     const currentAtom = theAtoms[i];
-    const paragraph = document.createElement('p');
+    const atomBox = document.createElement('div');
+    const p1 = document.createElement('p');
     const content = document.createTextNode(currentAtom.atomicNumber);
+    p1.appendChild(content);
+    const p2 = document.createElement('p');
     const content1 = document.createTextNode(currentAtom.symbol);
+    p2.appendChild(content1);
+    const p3 = document.createElement('p');
     const content2 = document.createTextNode(currentAtom.name);
+    p3.appendChild(content2);
 
-    paragraph.appendChild(content);
-    paragraph.appendChild(content1);
-    paragraph.appendChild(content2);
+    atomBox.appendChild(p1);
+    atomBox.appendChild(p2);
+    atomBox.appendChild(p3);
     const div1 = document.getElementById('div1');
-    div1.appendChild(paragraph);
-    paragraph.onclick = function () {
+    div1.appendChild(atomBox);
+    atomBox.onclick = function () {
       retrieveAtom(currentAtom.name);
       modal.style.display = 'block';
     };
