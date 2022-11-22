@@ -62,8 +62,13 @@ async function addAtoms(theAtoms) {
   for (let i = 0; i < theAtoms.length; i++) {
     const currentAtom = theAtoms[i];
     const paragraph = document.createElement('p');
-    const content = document.createTextNode(currentAtom.name);
+    const content = document.createTextNode(currentAtom.atomicNumber);
+    const content1 = document.createTextNode(currentAtom.symbol);
+    const content2 = document.createTextNode(currentAtom.name);
+
     paragraph.appendChild(content);
+    paragraph.appendChild(content1);
+    paragraph.appendChild(content2);
     const div1 = document.getElementById('div1');
     div1.appendChild(paragraph);
     paragraph.onclick = function () {
