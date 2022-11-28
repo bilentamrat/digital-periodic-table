@@ -62,6 +62,7 @@ async function addAtoms(theAtoms) {
   for (let i = 0; i < theAtoms.length; i++) {
     const currentAtom = theAtoms[i];
     const atomBox = document.createElement('div');
+    atomBox.setAttribute('id', 'atom-box');
     const p1 = document.createElement('p');
     const content = document.createTextNode(currentAtom.atomicNumber);
     p1.appendChild(content);

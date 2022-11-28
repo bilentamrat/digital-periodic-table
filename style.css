@@ -19,6 +19,7 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  color: black;
 }
 
 /* The Close Button */
@@ -45,7 +46,7 @@ body {
   flex-wrap: wrap;
 }
 
-#div1 div {
+#div1 #atom-box {
   display: flex;
   width: 100px;
   height: 100px;
