@@ -48,8 +48,8 @@ body {
 
 #div1 #atom-box {
   display: flex;
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   outline: 3px;
   outline-style: solid;
   outline-color: #d7d7d7;
