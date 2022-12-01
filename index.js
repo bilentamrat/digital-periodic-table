@@ -1,3 +1,4 @@
+
 const atomKeys = [
   'atomicNumber',
   'symbol',
@@ -24,8 +25,8 @@ const atomKeys = [
   'group',
 ];
 //console.log('We in HERE!');
-async function loadAtoms() {
-  const URL = 'https://periodic-table-elements-info.herokuapp.com/elements';
+async function loadAtoms() { 
+  const URL = 'https://secure-oasis-28926.herokuapp.com/https://periodic-table-elements-info.herokuapp.com/elements';
   const res = await fetch(`${URL}`);
   const data = await res.json();
   return data;
@@ -34,7 +35,7 @@ async function loadAtoms() {
 const atoms = loadAtoms();
 
 async function getAtom(name) {
-  const URL = `https://periodic-table-elements-info.herokuapp.com/element/atomicName/${name}`;
+  const URL = `https://secure-oasis-28926.herokuapp.com/https://periodic-table-elements-info.herokuapp.com/element/atomicName/${name}`;
   const res = await fetch(`${URL}`);
   const data = await res.json();
   return data;
@@ -69,14 +70,12 @@ async function createTables(theAtoms) {
   theAtoms = await theAtoms;
 
   const div1 = document.getElementById('div1');
-  let table = document.createElement('table');
+  const table = document.createElement('table');
   table.setAttribute('id','periodic_table');
   table.setAttribute('align','center');
 
   for (let i = 1; i < 8; i++) {
-      let table_row = document.createElement('tr');
-      for (let j = 1; j < 19; j++) {
-          let table_cell = document.createElement('td');
+      let table_row = document.createElement('tr');          let table_cell = document.createElement('td');
           table_cell.setAttribute('id', "table_1_" + i + "_" + j);
           table_row.appendChild(table_cell);
       }
@@ -84,7 +83,7 @@ async function createTables(theAtoms) {
   }
   div1.appendChild(table);
 
-  let table2 = document.createElement('table');
+  const table2 = document.createElement('table');
   table2.setAttribute('id','periodic_table1');
   table2.setAttribute('align','center');
 
@@ -154,7 +153,7 @@ async function createTables(theAtoms) {
     };
     
   }
-}
+
 createTables(atoms);
 
 async function addAtoms(theAtoms) {
