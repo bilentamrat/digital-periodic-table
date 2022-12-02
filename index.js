@@ -1,4 +1,3 @@
-
 const atomKeys = [
   'atomicNumber',
   'symbol',
@@ -26,16 +25,19 @@ const atomKeys = [
 ];
 //console.log('We in HERE!');
 async function loadAtoms() { 
-  const URL = 'https://secure-oasis-28926.herokuapp.com/https://periodic-table-elements-info.herokuapp.com/elements';
+  const URL = "./data.json"//'https://secure-oasis-28926.herokuapp.com/https://periodic-table-elements-info.herokuapp.com/elements';
   const res = await fetch(`${URL}`);
   const data = await res.json();
+  //var mydata = JSON.parse(data)
+  console.log("THE DATA", data);
+
   return data;
   //if (data.Response == "True") displayMovieList(data.Search);
 }
 const atoms = loadAtoms();
 
 async function getAtom(name) {
-  const URL = `https://secure-oasis-28926.herokuapp.com/https://periodic-table-elements-info.herokuapp.com/element/atomicName/${name}`;
+    const URL = `https://secure-oasis-28926.herokuapp.com/https://periodic-table-elements-info.herokuapp.com/element/atomicName/${name}`;
   const res = await fetch(`${URL}`);
   const data = await res.json();
   return data;
