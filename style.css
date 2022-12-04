@@ -38,7 +38,7 @@
 }
 
 body {
-  background-color: black;
+  background-color: #070535;
   color: white;
 }
 #div1 {
@@ -61,7 +61,7 @@ p {
   margin: 0;
 }
 
-/* select type of elements  */
+/* select type of elements */
 #element-selector {
   color: #fff;
   display: grid;
