@@ -160,8 +160,8 @@ async function createTables(theAtoms) {
 
     //const atomicNum = parseInt(currentAtom.atomicNumber);
     const atomicNum = parseInt(currentAtom.number);
-    console.log(atomicNum);
-    console.log(col);
+    //console.log(atomicNum);
+    //console.log(col);
     /*
     Boron is just wrong
     if (atomicNum == 5){
@@ -170,31 +170,36 @@ async function createTables(theAtoms) {
 
     if(atomicNum < 57 || atomicNum > 103 || (atomicNum > 71 && atomicNum < 89)){
       periodicTableLocation = document.getElementById("table_1_" + row + '_' + col);
-      console.log("table_1_" + row + '_' + col);
+      //console.log("table_1_" + row + '_' + col);
+      periodicTableLocation.setAttribute("class", currentAtom.category +'_unselected');
       periodicTableLocation.appendChild(atomBox);
     }
     if(atomicNum >= 57 && atomicNum <= 70 )
     {
       newColumn = String(atomicNum - 56);
-      console.log(newColumn);
+      //console.log(newColumn);
       periodicTableLocation = document.getElementById("table_2_1" + '_' + newColumn);
+      periodicTableLocation.setAttribute("class", currentAtom.category +'_unselected');
       periodicTableLocation.appendChild(atomBox);
 
     }
     // Atomic 71 is wrong
     if(atomicNum == 71){
       periodicTableLocation = document.getElementById("table_1_6_3");
+      periodicTableLocation.setAttribute("class", currentAtom.category +'_unselected');
       periodicTableLocation.appendChild(atomBox);     
     }
     // Atomic 103 is wrong
     if(atomicNum == 103){
       periodicTableLocation = document.getElementById("table_1_7_3");
+      periodicTableLocation.setAttribute("class", currentAtom.category +'_unselected');
       periodicTableLocation.appendChild(atomBox);     
     }  
     if(atomicNum >= 89 && atomicNum <= 102 )
     {
       newColumn = String(atomicNum - 88);
       periodicTableLocation = document.getElementById("table_2_2" + '_' + newColumn);
+      periodicTableLocation.setAttribute("class", currentAtom.category +'_unselected');
       periodicTableLocation.appendChild(atomBox);
     }
 
@@ -205,7 +210,7 @@ async function createTables(theAtoms) {
     
   } 
 } 
-  console.log("Lord Sesshomaru");
+  //console.log("Lord Sesshomaru");
 createTables(atoms);
 
 async function addAtoms(theAtoms) {
@@ -253,6 +258,34 @@ console.log('btn', btn);
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName('close')[0];
 
+
+// categories
+function noble_gas(){
+  console.log("noble gas");
+  selection = document.getElementsByClassName("noble gas_unselected");
+  console.log(selection);
+  console.log(selection.length);
+  for(let i = 0; i < selection.length; i++){
+    selection[i].setAttribute("class", "selected");
+  }
+  console.log(selection);
+
+}
+
+
+function alkaline_earth_metal(){
+  console.log("alkaline earth metal");
+  selection = document.getElementsByClassName("alkaline earth metal_unselected");
+  console.log(selection);
+
+  for(let i = 0; i < selection.length; i++){
+    selection[i].setAttribute("class", "selected");
+  }
+  console.log(selection);
+
+}
+
+
 // When the user clicks on the button, open the modal
 btn.onclick = function () {
   //retrieveAtom('sodium');
@@ -270,3 +303,4 @@ window.onclick = function (event) {
     modal.style.display = 'none';
   }
 };
+
