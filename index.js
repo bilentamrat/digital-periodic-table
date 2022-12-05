@@ -26,29 +26,29 @@ const atomKeys = [
 ];
 */
 const atomKeys = [
-  "name",
-  "appearance",
-  "atomic_mass",
-  "boil",
-  "category",
-  "density",
-  "discovered_by",
-  "melt",
-  "molar_heat",
-  "named_by",
-  "number",
-  "period",
-  "phase",
-  "xpos",
-  "ypos",
-  "symbol",
-  "electron_configuration",
+  'name',
+  'appearance',
+  'atomic_mass',
+  'boil',
+  'category',
+  'density',
+  'discovered_by',
+  'melt',
+  'molar_heat',
+  'named_by',
+  'number',
+  'period',
+  'phase',
+  'xpos',
+  'ypos',
+  'symbol',
+  'electron_configuration',
 ];
 
 //console.log('We in HERE!');
-async function loadAtoms() { 
+async function loadAtoms() {
   //const URL = "./data.json"//'https://secure-oasis-28926.herokuapp.com/https://periodic-table-elements-info.herokuapp.com/elements';
-  const URL = "./periodic.json";//'https://secure-oasis-28926.herokuapp.com/https://periodic-table-elements-info.herokuapp.com/elements';
+  const URL = './periodic.json'; //'https://secure-oasis-28926.herokuapp.com/https://periodic-table-elements-info.herokuapp.com/elements';
   const res = await fetch(`${URL}`);
   const data = await res.json();
   return data;
@@ -57,13 +57,13 @@ const atoms = loadAtoms();
 
 async function getAtom(name) {
   //const URL = `https://secure-oasis-28926.herokuapp.com/https://periodic-table-elements-info.herokuapp.com/element/atomicName/${name}`;
-  const URL = "./periodic.json";
+  const URL = './periodic.json';
   const res = await fetch(`${URL}`);
   const elements = await res.json();
   var data;
   for (let i = 0; i < 118; i++) {
     const currentAtom = elements[i];
-    if(currentAtom.name == name){
+    if (currentAtom.name == name) {
       data = currentAtom;
       console.log(data);
     }
@@ -75,7 +75,7 @@ async function retrieveAtom(atom) {
   atom = await getAtom(atom);
   //console.log('sodium', atom);
   // next line clears the html in the "atom-content" paragraph (innerHTML)
-  document.getElementsByClassName('atom-content')[0].innerHTML = "";
+  document.getElementsByClassName('atom-content')[0].innerHTML = '';
   for (let i = 0; i < atomKeys.length; i++) {
     //const atomValue = atom[0][`${atomKeys[i]}`];
     const atomValue = atom[`${atomKeys[i]}`];
@@ -87,10 +87,10 @@ async function retrieveAtom(atom) {
       p.appendChild(content);
       // next line adds colons between keys and values in the htm
       // the "atom-content" paragraph (innerHTML)
-      document.getElementsByClassName('atom-content')[0].innerHTML += ": ";
+      document.getElementsByClassName('atom-content')[0].innerHTML += ': ';
       p.appendChild(content1);
       // next lines make line breaks to separate "content" (was all on one line before)
-      const lineBreak = document.createElement("p");
+      const lineBreak = document.createElement('p');
       p.appendChild(lineBreak);
     }
   }
@@ -100,35 +100,35 @@ async function retrieveAtom(atom) {
 
 async function createTables(theAtoms) {
   theAtoms = await theAtoms;
-  console.log("THE ATOMS", theAtoms);
+  console.log('THE ATOMS', theAtoms);
   const div1 = document.getElementById('div1');
   const table = document.createElement('table');
-  table.setAttribute('id','periodic_table');
-  table.setAttribute('align','center');
+  table.setAttribute('id', 'periodic_table');
+  table.setAttribute('align', 'center');
 
   for (let i = 1; i < 8; i++) {
-      let table_row = document.createElement('tr');
-      for (let j = 1; j < 19; j++) {
-          let table_cell = document.createElement('td');
-          table_cell.setAttribute('id', "table_1_" + i + "_" + j);
-          table_row.appendChild(table_cell);
-      }
-      table.appendChild(table_row);
+    let table_row = document.createElement('tr');
+    for (let j = 1; j < 19; j++) {
+      let table_cell = document.createElement('td');
+      table_cell.setAttribute('id', 'table_1_' + i + '_' + j);
+      table_row.appendChild(table_cell);
+    }
+    table.appendChild(table_row);
   }
   div1.appendChild(table);
 
   const table2 = document.createElement('table');
-  table2.setAttribute('id','periodic_table1');
-  table2.setAttribute('align','center');
+  table2.setAttribute('id', 'periodic_table1');
+  table2.setAttribute('align', 'center');
 
   for (let i = 1; i < 3; i++) {
-      let table_row = document.createElement('tr');
-      for (let j = 1; j < 15; j++) {
-          let table_cell = document.createElement('td');
-          table_cell.setAttribute('id', "table_2_" + i + "_" + j);
-          table_row.appendChild(table_cell);
-      }
-      table2.appendChild(table_row);
+    let table_row = document.createElement('tr');
+    for (let j = 1; j < 15; j++) {
+      let table_cell = document.createElement('td');
+      table_cell.setAttribute('id', 'table_2_' + i + '_' + j);
+      table_row.appendChild(table_cell);
+    }
+    table2.appendChild(table_row);
   }
   div1.appendChild(table2);
 
@@ -174,14 +174,12 @@ async function createTables(theAtoms) {
       periodicTableLocation.setAttribute("class", currentAtom.category +'_unselected');
       periodicTableLocation.appendChild(atomBox);
     }
-    if(atomicNum >= 57 && atomicNum <= 70 )
-    {
+    if (atomicNum >= 57 && atomicNum <= 70) {
       newColumn = String(atomicNum - 56);
       //console.log(newColumn);
       periodicTableLocation = document.getElementById("table_2_1" + '_' + newColumn);
       periodicTableLocation.setAttribute("class", currentAtom.category +'_unselected');
       periodicTableLocation.appendChild(atomBox);
-
     }
     // Atomic 71 is wrong
     if(atomicNum == 71){
